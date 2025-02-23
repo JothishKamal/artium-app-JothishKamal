@@ -113,86 +113,91 @@ class _SignupPageState extends State<SignupPage> {
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
-        body: Stack(
-          fit: StackFit.expand,
-          children: [
-            Positioned(
-              top: 48,
-              left: 24,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  SvgPicture.asset('images/logo.svg'),
-                  SizedBox(
-                    width: 12,
-                  ),
-                  const Text(
-                    'Artium',
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontFamily: 'Outfit',
-                      color: CustomColors.primaryWhite,
-                      fontWeight: FontWeight.w200,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Align(
-              alignment: Alignment.topCenter,
-              child: Image.asset(
-                'images/auth_top.png',
-              ),
-            ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: Image.asset(
-                'images/auth_bottom.png',
-              ),
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
+        body: SingleChildScrollView(
+          child: SizedBox(
+            height: MediaQuery.of(context).size.height,
+            child: Stack(
+              fit: StackFit.expand,
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 36.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                Positioned(
+                  top: 48,
+                  left: 24,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      const Text(
-                        'Welcome!',
-                        style: TextStyle(
-                          color: CustomColors.secondaryBrown,
-                          fontFamily: "OutfitRegular",
-                          fontSize: 42,
-                        ),
+                      SvgPicture.asset('images/logo.svg'),
+                      SizedBox(
+                        width: 12,
                       ),
                       const Text(
-                        "Login or Sign up to start creating",
+                        'Artium',
                         style: TextStyle(
+                          fontSize: 24,
+                          fontFamily: 'Outfit',
                           color: CustomColors.primaryWhite,
-                          fontFamily: "OutfitRegular",
-                          fontSize: 20,
+                          fontWeight: FontWeight.w200,
                         ),
                       ),
-                      const SizedBox(height: 40.0),
                     ],
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 36.0),
-                  child: ToggleSection(
-                      isLogin: false, toggleView: widget.toggleView),
+                Align(
+                  alignment: Alignment.topCenter,
+                  child: Image.asset(
+                    'images/auth_top.png',
+                  ),
                 ),
-                if (showOtpSection)
-                  _buildOtpSection()
-                else if (showEmailPasswordSection)
-                  _buildEmailPasswordSection(context)
-                else
-                  _buildProfileSection(),
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Image.asset(
+                    'images/auth_bottom.png',
+                  ),
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 36.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            'Welcome!',
+                            style: TextStyle(
+                              color: CustomColors.secondaryBrown,
+                              fontFamily: "OutfitRegular",
+                              fontSize: 42,
+                            ),
+                          ),
+                          const Text(
+                            "Login or Sign up to start creating",
+                            style: TextStyle(
+                              color: CustomColors.primaryWhite,
+                              fontFamily: "OutfitRegular",
+                              fontSize: 20,
+                            ),
+                          ),
+                          const SizedBox(height: 40.0),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 36.0),
+                      child: ToggleSection(
+                          isLogin: false, toggleView: widget.toggleView),
+                    ),
+                    if (showOtpSection)
+                      _buildOtpSection()
+                    else if (showEmailPasswordSection)
+                      _buildEmailPasswordSection(context)
+                    else
+                      _buildProfileSection(),
+                  ],
+                ),
               ],
             ),
-          ],
+          ),
         ),
       ),
     );
